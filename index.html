@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+            border: 3px solid green; 
+        }
+        button{
+            width: 10vh;
+            height: 10vh;
+            border-radius: 50%;
+            color:black;
+            background-color: white;
+            text-shadow: 2px 2px #FF0000;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 5vh;
+            /* background-image: radial-gradient(rgb(56, 150, 68), rgb(18, 68, 30)); */
+        }
+        button:hover{
+            border-radius: 20%;
+            cursor: pointer;
+            color: rgb(24, 36, 70);
+            background-image: radial-gradient(yellow, rgb(21, 82, 24));
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><button id="10" onclick="mainAction(10)">X</button></td>
+            <td><button id="11" onclick="mainAction(11)">O</button></td>
+            <td><button id="12" onclick="mainAction(12)">O</button></td>
+            <td><button id="13" onclick="mainAction(13)">O</button></td>
+        </tr>
+        <tr>
+            <td><button id="20" onclick="mainAction(20)">O</button></td>
+            <td><button id="21" onclick="mainAction(21)">O</button></td>
+            <td><button id="22" onclick="mainAction(22)">O</button></td>
+            <td><button id="23" onclick="mainAction(23)">O</button></td>
+        </tr>
+        <tr>
+            <td><button id="30" onclick="mainAction(30)">O</button></td>
+            <td><button id="31" onclick="mainAction(31)">O</button></td>
+            <td><button id="32" onclick="mainAction(32)">O</button></td>
+            <td><button id="33" onclick="mainAction(33)">O</button></td>
+        </tr>
+        <tr>
+            <td><button id="40" onclick="mainAction(40)">O</button></td>
+            <td><button id="41" onclick="mainAction(41)">O</button></td>
+            <td><button id="42" onclick="mainAction(42)">O</button></td>
+            <td><button id="43" onclick="mainAction(43)">O</button></td>
+        </tr>
+    </table>
+</body>
+<script>
+    function mainAction(mainValue){
+        
+        var X = document.getElementById(mainValue.toString());
+
+        var A = document.getElementById((mainValue - 1).toString());
+        var B = document.getElementById((mainValue + 1).toString());
+        var C = document.getElementById((mainValue - 10).toString());
+        var D = document.getElementById((mainValue + 10).toString());
+
+        console.log(window.getComputedStyle(document.getElementById(mainValue.toString())).backgroundColor);
+        var elementColor = window.getComputedStyle(document.getElementById(mainValue.toString())).backgroundColor;
+        var numbers = elementColor.match(/\d+/g).map(Number);
+        console.log(numbers);
+        var inputRed = numbers[0];
+        var inputGreen = numbers[1];
+        var inputBlue = numbers[2];
+
+        var changeColor = Math.floor(Math.random() * 3); 
+        var changeIntensity = Math.floor(Math.random() * 50) + 1;
+
+        console.log(changeColor);
+        console.log(changeIntensity);
+
+        console.log(inputRed);
+        console.log(inputGreen);
+        console.log(inputBlue);
+
+        if(numbers[changeColor] - changeIntensity >= 0){
+            numbers[changeColor] = numbers[changeColor] - changeIntensity
+        }
+        console.log("a");
+        console.log(numbers);
+        console.log("a");
+        var outputColor = "rgb(" + (numbers[0]).toString() + ", " + (numbers[1]).toString() 
+                                + ", " + (numbers[2]).toString() + ")"
+        console.log(outputColor);
+
+        if(A != null && A.textContent == "X"){
+            X.innerHTML = "X";
+            /* X.style.backgroundColor = "red"; */
+            X.style.backgroundColor = outputColor;
+            A.innerHTML = "O";
+        } else if(B != null && B.textContent == "X"){
+            X.innerHTML = "X";
+            /* X.style.backgroundColor = "green"; */
+            X.style.backgroundColor = outputColor;
+            B.innerHTML = "O";
+        } else if(C != null && C.textContent == "X"){
+            X.innerHTML = "X";
+            /* X.style.backgroundColor = "blue"; */
+            X.style.backgroundColor = outputColor;
+            C.innerHTML = "O";
+        } else if(D != null && D.textContent == "X"){
+            X.innerHTML = "X";
+            /* X.style.backgroundColor = "yellow"; */
+            X.style.backgroundColor = outputColor;
+            D.innerHTML = "O";
+        } else {
+            return
+        }
+    }
+</script>
+</html>

@@ -1,4 +1,4 @@
-<img src="Screenshot.jpg" width="500px">
+<img src="Screenshot.jpg" width="300px">
 
 # RGB-Color-Changer
 RGB Color Changer written in HTML, CSS, JS
